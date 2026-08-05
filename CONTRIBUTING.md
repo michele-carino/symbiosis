@@ -43,3 +43,20 @@ Use clear, imperative commit messages to explain *what* and *why*:
 
 [optional body explaining motivation and architectural rationale]
 [optional reference to specification file, e.g., Refs specs/2026/08/2026-08-05-auth.md]
+
+---
+
+## 4. Local Task Runner (`Justfile`) as Agent Contract
+
+To guarantee seamless human-AI collaboration and enforce local buildability, the repository root MUST maintain a clear, well-documented `Justfile`. 
+
+The `Justfile` acts as a **machine-readable contract** between the developer and the AI agent.
+
+### Maintenance Rules for `Justfile`:
+1. **Self-Documenting Recipes:** Every task must include a comment (`# comment`) above the recipe or inline documentation so that the AI agent can list (`just --list`) and understand available operations.
+2. **Standardized Naming Conventions:** Standard tasks MUST maintain predictable recipe names across modules:
+   * `just dev` — Runs the local development environment or hot-reload runner.
+   * `just build` — Compiles, packages, or builds all local artifacts.
+   * `just test` — Runs the full automated local test suite.
+   * `just lint` — Runs local code formatters and static analysis tools.
+3. **Zero Opaque Steps:** All local dependencies, environment variables (via `.env`), or containerized mocks must be orchestrated directly within the `Justfile` recipes. The AI MUST NOT be required to guess raw CLI flags or unscripted build commands.
