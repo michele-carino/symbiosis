@@ -58,13 +58,18 @@ Use clear, imperative commit messages to explain *what* and *why*:
 
 To guarantee seamless human-AI collaboration and enforce local buildability, the repository root MUST maintain a clear, well-documented `Justfile`. 
 
-The `Justfile` acts as a **machine-readable contract** between the developer and the AI agent.
+The `Justfile` acts as a **machine-readable contract** between the developer and the AI agent, making the codebase completely self-contained.
+
+> **The Self-Contained Repository Principle:**
+> Every operational requirement MUST be encoded directly inside the `Justfile`. If a new operation is needed (e.g., database seeding, running integration tests, scaffolding, or generating mocks), it MUST be added as a `Justfile` recipe first. This guarantees that whether a new human contributor or a new AI agent enters the project tomorrow, 100% of the operational workflow is fully documented, deterministic, and executable locally with a single command.
 
 ### Maintenance Rules for `Justfile`:
-1. **Self-Documenting Recipes:** Every task must include a comment (`# comment`) above the recipe or inline documentation so that the AI agent can list (`just --list`) and understand available operations.
-2. **Standardized Naming Conventions:** Standard tasks MUST maintain predictable recipe names across modules:
+1. **Skill Registration & No Raw Commands:** Never execute or suggest unscripted raw CLI commands. If an operational task is missing, write a new recipe in the `Justfile` to expose it as a project Skill before execution.
+2. **Self-Documenting Recipes:** Every task MUST include a comment (`# comment`) above the recipe or inline documentation so that both human developers and AI agents can list (`just --list`) and understand available operations.
+3. **Standardized Naming Conventions:** Standard tasks MUST maintain predictable recipe names across modules:
+   * `just spec "<title>"` — Scaffolds a new specification file inside `specs/YYYY/MM/`.
    * `just dev` — Runs the local development environment or hot-reload runner.
    * `just build` — Compiles, packages, or builds all local artifacts.
    * `just test` — Runs the full automated local test suite.
    * `just lint` — Runs local code formatters and static analysis tools.
-3. **Zero Opaque Steps:** All local dependencies, environment variables (via `.env`), or containerized mocks must be orchestrated directly within the `Justfile` recipes. The AI MUST NOT be required to guess raw CLI flags or unscripted build commands.
+4. **Zero Opaque Steps:** All local dependencies, environment variables (via `.env`), or containerized mocks MUST be orchestrated directly within `Justfile` recipes. The AI MUST NOT be required to guess raw CLI flags or unscripted build commands.
