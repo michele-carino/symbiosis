@@ -43,6 +43,7 @@ Use clear, imperative commit messages to explain *what* and *why*:
 
 [optional body explaining motivation and architectural rationale]
 [optional reference to specification file, e.g., Refs specs/2026/08/2026-08-05-auth.md]
+```
 
 ---
 
