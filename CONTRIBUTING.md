@@ -73,3 +73,20 @@ The `Justfile` acts as a **machine-readable contract** between the developer and
    * `just test` — Runs the full automated local test suite.
    * `just lint` — Runs local code formatters and static analysis tools.
 4. **Zero Opaque Steps:** All local dependencies, environment variables (via `.env`), or containerized mocks MUST be orchestrated directly within `Justfile` recipes. The AI MUST NOT be required to guess raw CLI flags or unscripted build commands.
+
+## 5. Changelog Standard (Keep a Changelog 1.1.0)
+
+To maintain a human-readable, structured version history, this repository strictly adheres to the [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) specification and follows [Semantic Versioning (SemVer 2.0.0)](https://semver.org/).
+
+### Mandatory Rules for `CHANGELOG.md`:
+1. **Single Source of Truth:** All notable user-facing or developer-facing changes MUST be recorded in `CHANGELOG.md` located at the root of the repository.
+2. **The `[Unreleased]` Header:** Any change made during development MUST be placed under the `## [Unreleased]` section at the top of the file before a Pull Request is merged or a task is finalized.
+3. **Strict Categorization:** Changes inside a version section MUST be grouped exclusively under these 6 standard subheadings:
+   * `### Added` — for new features.
+   * `### Changed` — for changes in existing functionality.
+   * `### Deprecated` — for soon-to-be removed features.
+   * `### Removed` — for now removed features.
+   * `### Fixed` — for any bug fixes.
+   * `### Security` — in case of vulnerabilities.
+4. **Chronological & ISO Dates:** Releases MUST use ISO 8601 date formatting (`YYYY-MM-DD`), e.g., `## [1.0.0] - 2026-08-05`.
+5. **Specification Linkage:** Every entry MUST reference its originating spec file in `specs/` (e.g., `- Added JWT authentication middleware (Refs `specs/2026/08/2026-08-05-auth.md`)`).
