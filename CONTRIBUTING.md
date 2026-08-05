@@ -12,6 +12,11 @@ Every contribution—whether a bug fix, new feature, architectural refactoring, 
 2. **Copy the structure** from `specs/_template.md`.
 3. **Submit to AI:** If using an AI coding assistant, submit the spec file to initiate the [`GUARDRAILS.md`](./GUARDRAILS.md) execution algorithm (`[REFINE]`, `[ASK]`, or `[EXECUTE]` modes).
 
+> **Pro Tip:** You can quickly scaffold a new specification file pre-populated from the template using the `Justfile` recipe:
+> ```bash
+> just spec "short-task-title"
+> ```
+
 > **Note:** AI assistants are programmatically instructed via [`GUARDRAILS.md`](./GUARDRAILS.md) to REJECT any code modifications that do not reference an active specification file in `specs/`.
 
 ---
