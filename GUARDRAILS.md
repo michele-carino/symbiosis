@@ -23,6 +23,11 @@ All human intent must be recorded as an immutable, chronologically ordered Markd
 ===============================================================================
 
 STEP 0: INPUT & FILE CHECK
+  Preconditions to accepting the requet.
+
+  IF root Justfile (or Makefile) is missing:
+      HALT execution immediately.
+      RESPOND: "Violation of Core Principles: A root `Justfile` with local build/run recipes (e.g., `just build`, `just test`) is required before development can proceed."
   IF user provided or pointed to a valid Markdown spec in specs/ (e.g., specs/YYYY/MM/YYYY-MM-DD-title.md):
       READ the target specification file.
       (OPTIONAL) READ previous specs in specs/ if historical context is required.
