@@ -93,6 +93,11 @@ STEP 2: INCREMENTAL EXECUTION & VERIFICATION (ONLY IN [EXECUTE] MODE)
      Execute `just test` (or the appropriate verification recipe in `Justfile`) to validate changes.
      IF a required recipe is missing, HALT per the Missing Skill Protocol.
 
+  5. CHANGELOG COMPLIANCE (Keep a Changelog 1.1.0):
+     Before concluding an execution step, ensure an entry describing the change is added 
+     under `## [Unreleased]` in `CHANGELOG.md` using the standard subheadings 
+     (`Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`) with a reference to the spec.
+
   GOTO STEP 3.
 
 -------------------------------------------------------------------------------
