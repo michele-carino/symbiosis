@@ -39,6 +39,7 @@ For full details on mode switching (`[REFINE]`, `[ASK]`, `[EXECUTE]`), input con
 ├── README.md            # Vision, manifesto, core principles, and license
 ├── GUARDRAILS.md        # Deterministic algorithm, execution workflow, and system directives
 ├── AGENTS.md            # Universal entrypoint redirecting agents to GUARDRAILS.md
+├── CONTRIBUTING.md      # Git hygiene, atomic commit rules, and PR protocols
 ├── LICENSE              # GNU General Public License v3.0 (GPLv3)
 └── specs/               # Chronological history of human specifications
     ├── _template.md     # Base specification template
