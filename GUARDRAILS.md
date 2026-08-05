@@ -15,7 +15,20 @@ All human intent must be recorded as an immutable, chronologically ordered Markd
 
 ---
 
-## 2. Agent Execution Algorithm
+## 2. Agent Skills & Justfile Protocol
+
+The project `Justfile` serves as your **executable contract** and registry of capabilities (Skills) within this repository.
+
+1. **Skill Discovery First:** Whenever you need to execute an operational command (e.g., building, testing, linting, running migrations, or scaffolding), you MUST first inspect the `Justfile` recipes (`just --list`) and use the existing Skill instead of executing raw terminal commands.
+2. **No Raw Unscripted Commands:** You are STRICTLY FORBIDDEN from running complex, unscripted raw CLI commands (e.g., `npm test`, `cargo build`, `pytest`) if a corresponding abstraction should exist in the `Justfile`.
+3. **Missing Skill Protocol:** If an operation is required to complete or verify a task but no corresponding recipe exists in the `Justfile`, you MUST NOT guess or invent raw commands. Instead, you MUST HALT, enter Mode: [ASK], and request the human developer to add the required recipe/skill to the `Justfile`.
+
+   *Example Halt Response:*
+   > "Guardrail Halt: I need to run database migrations to verify this spec, but no `just db-migrate` recipe exists in the `Justfile`. Please add the appropriate recipe to the `Justfile` so I can proceed."
+
+---
+
+## 3. Agent Execution Algorithm
 
 ```text
 ===============================================================================
@@ -23,7 +36,7 @@ All human intent must be recorded as an immutable, chronologically ordered Markd
 ===============================================================================
 
 STEP 0: INPUT & FILE CHECK
-  Preconditions to accepting the requet.
+  Preconditions to accepting the request.
 
   IF root Justfile (or Makefile) is missing:
       HALT execution immediately.
@@ -62,7 +75,7 @@ STEP 1: INTENT CLASSIFICATION & SPECIFICATION AUDIT
 
 -------------------------------------------------------------------------------
 
-STEP 2: INCREMENTAL EXECUTION (ONLY IN [EXECUTE] MODE)
+STEP 2: INCREMENTAL EXECUTION & VERIFICATION (ONLY IN [EXECUTE] MODE)
   Execute code changes under the following mandatory constraints:
 
   1. CHUNK LIMIT:
@@ -75,6 +88,10 @@ STEP 2: INCREMENTAL EXECUTION (ONLY IN [EXECUTE] MODE)
 
   3. TRANSPARENCY:
      Present the simplest, most maintainable solution first. Do not add unrequested abstractions.
+
+  4. LOCAL VERIFICATION VIA SKILLS:
+     Execute `just test` (or the appropriate verification recipe in `Justfile`) to validate changes.
+     IF a required recipe is missing, HALT per the Missing Skill Protocol.
 
   GOTO STEP 3.
 
