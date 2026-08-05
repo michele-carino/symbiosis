@@ -8,9 +8,11 @@ Thank you for contributing! To maintain long-term codebase health, preserve huma
 
 Every contribution—whether a bug fix, new feature, architectural refactoring, or codebase analysis—MUST start with a Markdown specification file in the `specs/` directory:
 
-1. Create a spec file following the chronological folder structure: `specs/YYYY/MM/YYYY-MM-DD-short-title.md`.
-2. Copy the structure from [`specs/_template.md`](./specs/_template.md).
-3. If using an AI coding assistant, submit the spec file to initiate the [`GUARDRAILS.md`](./GUARDRAILS.md) execution algorithm (`[REFINE]`, `[ASK]`, or `[EXECUTE]` modes).
+1. **Create a spec file** following the chronological folder structure: `specs/YYYY/MM/YYYY-MM-DD-short-title.md`.
+2. **Copy the structure** from `specs/_template.md`.
+3. **Submit to AI:** If using an AI coding assistant, submit the spec file to initiate the [`GUARDRAILS.md`](./GUARDRAILS.md) execution algorithm (`[REFINE]`, `[ASK]`, or `[EXECUTE]` modes).
+
+> **Note:** AI assistants are programmatically instructed via [`GUARDRAILS.md`](./GUARDRAILS.md) to REJECT any code modifications that do not reference an active specification file in `specs/`.
 
 ---
 
