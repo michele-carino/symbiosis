@@ -17,7 +17,8 @@ Through explicit guardrails and operational empathy, Symbiosis transforms AI fro
 * **Primary Cognitive Control:** The human is the *Navigator*; the AI is the *Driver*. No substantial change occurs without human understanding and approval.
 * **Operational Empathy:** The AI respects human cognitive load by delivering small, readable iterations and avoiding monolithic overhauls.
 * **Continuous Alignment:** Every development step relies on an active feedback loop to ensure a shared mental model of the codebase.
-
+* **Single-Task Local Execution**: No software or architecture may be introduced if it cannot be run, tested, and built locally using a single entrypoint task defined in the project runner (Justfile).
+  
 ---
 
 ## 2. AI Directives & Guardrails
